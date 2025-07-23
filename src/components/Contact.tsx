@@ -116,13 +116,13 @@ const Contact: React.FC = () => {
     {
       icon: <Phone className="w-6 h-6" />,
       title: 'Call Us',
-      details: '+1 (555) 123-ZEST',
+      details: '+92 317 2472531',
       color: 'text-limca-yellow',
     },
     {
       icon: <Mail className="w-6 h-6" />,
       title: 'Email Us',
-      details: 'hello@adlimca.com',
+      details: 'umarofficial0121@gmail.com',
       color: 'text-limca-green',
     },
   ];
