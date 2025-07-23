@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS Variables */
+:root {
+  --primary-green: #2ECC71;
+  --primary-yellow: #F1C40F;
+  --primary-white: #FFFFFF;
+  --secondary-light-gray: #F8F9FA;
+  --secondary-dark-green: #27AE60;
+  --animation-speed: 0.3s;
+}
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Custom Cursor with Bubble Trail */
+.bubble-cursor {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: var(--primary-yellow);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  animation: bubble-float 2s infinite;
+  opacity: 0.7;
+}
+
+@keyframes bubble-float {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-10px) scale(1.2); }
+}
+
+/* Lemon Splash Animation */
+@keyframes lemon-splash {
+  0% { transform: scale(0) rotate(0deg); opacity: 0; }
+  50% { transform: scale(1.2) rotate(180deg); opacity: 0.8; }
+  100% { transform: scale(1) rotate(360deg); opacity: 1; }
+}
+
+.lemon-splash {
+  animation: lemon-splash 2s ease-out infinite;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+.floating {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Parallax Effect */
+.parallax {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* 3D Card Rotation */
+.card-3d {
+  perspective: 1000px;
+  transition: transform var(--animation-speed) ease;
+}
+
+.card-3d:hover .card-inner {
+  transform: rotateY(15deg) rotateX(5deg);
+}
+
+.card-inner {
+  transition: transform var(--animation-speed) ease;
+  transform-style: preserve-3d;
+}
+
+/* Pulse Animation */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px var(--primary-yellow); }
+  50% { box-shadow: 0 0 40px var(--primary-yellow), 0 0 60px var(--primary-green); }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Loading Spinner */
+@keyframes spin-citrus {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.spin-citrus {
+  animation: spin-citrus 2s linear infinite;
+}
+
+/* Timeline Animation */
+@keyframes slide-in-left {
+  0% { transform: translateX(-100px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slide-in-right {
+  0% { transform: translateX(100px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+.slide-in-left {
+  animation: slide-in-left 0.8s ease-out forwards;
+}
+
+.slide-in-right {
+  animation: slide-in-right 0.8s ease-out forwards;
+}
+
+/* Counter Animation */
+@keyframes count-up {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.count-up {
+  animation: count-up 1s ease-out;
+}
+
+/* Button Hover Effects */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-dark-green));
+  transition: all var(--animation-speed) ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(46, 204, 113, 0.3);
+}
+
+/* Form Elements */
+.form-lemon {
+  border-radius: 50px;
+  transition: all var(--animation-speed) ease;
+}
+
+.form-lemon:focus {
+  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
+  border-color: var(--primary-green);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .bubble-cursor {
+    display: none;
+  }
+  
+  .card-3d:hover .card-inner {
+    transform: none;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .parallax {
+    transform: none !important;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  :root {
+    --primary-green: #000000;
+    --primary-yellow: #FFFF00;
+    --secondary-dark-green: #000000;
+  }
+}
